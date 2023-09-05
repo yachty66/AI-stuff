@@ -13,11 +13,11 @@ RUN pip install --upgrade pip
 ENV TORCH_CUDA_ARCH_LIST="8.0;8.6;8.6+PTX;8.9;9.0"
 
 # Install AutoGPTQ from source
+# Install AutoGPTQ from source
 RUN pip3 uninstall -y auto-gptq && \
     git clone https://github.com/PanQiWei/AutoGPTQ && \
     cd AutoGPTQ && \
-    auto_gptq-0.3.2+cu117-cp38-cp38-linux_x86_64.whl
- && \
+    git checkout v0.3.2 && \
     pip3 install .
 
 ADD requirements.txt requirements.txt
