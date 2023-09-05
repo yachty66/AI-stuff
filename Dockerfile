@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y git wget
 # Upgrade pip
 RUN pip install --upgrade pip
 
+# Upgrade PyTorch to at least version 1.13
+RUN pip install --upgrade torch>=1.13
+
 # Set the CUDA architecture list
 ENV TORCH_CUDA_ARCH_LIST="8.0;8.6;8.6+PTX;8.9;9.0"
 
