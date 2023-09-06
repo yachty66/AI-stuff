@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y git wget
 # Upgrade pip
 RUN pip install --upgrade pip
 
-RUN pip install auto-gptq
+RUN pip install auto-gptq==0.4.2
 
 WORKDIR /
 
