@@ -15,13 +15,18 @@ RUN pip install --upgrade torch>=1.13
 # Set the CUDA architecture list
 ENV TORCH_CUDA_ARCH_LIST="8.0;8.6;8.6+PTX;8.9;9.0"
 
+# Clone AutoGPTQ from source
+RUN git clone https://github.com/PanQiWei/AutoGPTQ
+
+WORKDIR /AutoGPTQ
+
+# Checkout to specific version
+RUN git checkout v0.3.2
+
 # Install AutoGPTQ from source
-# Install AutoGPTQ from source
-RUN pip3 uninstall -y auto-gptq && \
-    git clone https://github.com/PanQiWei/AutoGPTQ && \
-    cd AutoGPTQ && \
-    git checkout v0.3.2 && \
-    pip3 install .
+RUN pip3 install .
+
+WORKDIR /
 
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
