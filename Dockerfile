@@ -9,8 +9,6 @@ RUN apt-get update && apt-get install -y git wget
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Download and install specific version of AutoGPTQ
-RUN pip install nougat-ocr
 
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
